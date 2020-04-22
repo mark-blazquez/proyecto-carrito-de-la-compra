@@ -1,0 +1,31 @@
+<footer class=" bg-dark fixed-bottom  "><!--pie de pagina-->
+	  	<div class="d-flex justify-content-center p-2">
+			<span class="fa-stack fa-2x">
+				<a href="https://www.facebook.com/"></a>
+				<i class="fa fa-circle fa-stack-2x icon-background " id="circuloface"></i>
+				<i class="fab fa-facebook-f fa-stack-1x text-light"></i>
+				</a>
+			</span>
+			<span class="fa-stack fa-2x">
+				<a href="https://twitter.com/explore"></a>
+				<i class="fa fa-circle fa-stack-2x icon-background " id="circulotwiter"></i>
+				<i class="fab fa-twitter fa-stack-1x text-light"></i>
+				</a>
+			</span>
+			<span class="fa-stack fa-2x">
+				<a href="https://www.linkedin.com/">
+				<i class="fa fa-circle fa-stack-2x icon-background text-danger"></i>
+				<i class="fab fa-google-plus-g fa-stack-1x text-light"></i>
+				</a>
+			</span>
+			<span class="fa-stack fa-2x">
+				<a href="https://www.linkedin.com/">
+				<i class="fa fa-circle fa-stack-2x icon-background text-primary"></i>
+				<i class="fab fa-linkedin-in fa-stack-1x text-light"></i>
+				</a>
+			</span>
+		</div>
+		<div class="d-flex justify-content-center">
+			<h5 class="text-light">@2020 Copyright</h5>
+		</div>
+</footer>
