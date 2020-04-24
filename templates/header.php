@@ -1,8 +1,15 @@
-<header>
-	<nav class="navbar bg-dark navbar-dark navbar-expand-sm d-flex">
-			<h1 class="text-light mr-auto p-2">tiendas mark</h1>
+<header  class="bg-dark" >
+	<h1 class="text-center text-light">tiendas mark</h1>
+	<nav class="navbar bg-dark navbar-dark ">
+		<div class="d-flex p-2 w-100 justify-content-start">
+			
+			<div>
+				<button type="button" class="btn btn-primary text-light ">
+					<a href="mostrarcarrito.php" class="text-light">ir al carrito</a>	
+				</button>
+			</div>
 
-			<div class="d-flex">
+			<div class=" p-2">
 				<form action="validacion.php" method="POST" >
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
 						iniciar sesion 
@@ -36,7 +43,7 @@
 				</form>
 			</div>
 
-			<div>
+			<div class=" p-2">
 				<form action="userregistrado.php" method="POST">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
 						registrarte
@@ -90,5 +97,6 @@
 					</div>
 				</form>
 			</div>
+		</div>
 	</nav>
 </header>
