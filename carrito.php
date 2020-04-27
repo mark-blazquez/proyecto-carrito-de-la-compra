@@ -2,9 +2,10 @@
     define("KEY","ola");
     define("COD","AES-128-ECB");
     session_start();
+    
 
-    if(isset($_POST["agregar"])){
-        switch($_POST["agregar"]){
+    if(isset($_POST["accion"])){
+        switch($_POST["accion"]){
             case'agregar al carrito':
 
                 if (is_numeric(openssl_decrypt($_POST["id"],COD,KEY))){
@@ -39,16 +40,16 @@
                 else{
                     $mensaje ="precio incorrecto ".$precio;
                 }
-                if (!isset($_SESSION["usuario"])){
+                if (!isset($_SESSION["carrito"])){
                     $producto=array(
                         'id'=>$id,
                         'nombre'=>$nombre,
                         'cantidad'=>$cantidad,
                         'precio'=>$precio);
-                    $_SESSION["usuario"][0]=$producto;
+                    $_SESSION["carrito"][0]=$producto;
                 }
                 else{
-                    $numeroProducto=count($_SESSION["usuario"]);
+                    $numeroProducto=count($_SESSION["carrito"]);
                     $producto=array(
                         'id'=>$id,
                         'nombre'=>$nombre,
@@ -56,21 +57,25 @@
                         'precio'=>$precio
 
                     );
-                    $_SESSION["usuario"][$numeroProducto]=$producto;
+                    $_SESSION["carrito"][$numeroProducto]=$producto;
                 }
-                //$mensaje=print_r ($_SESSION,true);
                 $mensaje ="producto agregado al carrito";
             break;
-
-            case "borrar carrito":
+            case 'borrar del carrito':
                 if (is_numeric(openssl_decrypt($_POST["id"],COD,KEY))){
                     $id=openssl_decrypt($_POST["id"],COD,KEY);
                     
 
-                    foreach ($_SESSION["usuario"] as $indice => $producto){
+                    foreach ($_SESSION["carrito"] as $indice => $producto){
                         if($producto['id']==$id){
-                            unset($_SESSION["usuario"][$indice]);
-                            echo "<script>alert('elemento borrado..');</script>";
+                            unset($_SESSION["carrito"][$indice]);
+                            if (isset($_SESSION["carrito"])) {
+                                header("location:mostrarcarritoregis.php");
+                            }else{
+                                header("location:mostrarcarritonoregis.php");
+                            }
+                            
+                            
                         }
                     }
                 }
@@ -79,8 +84,7 @@
                 }
 
             break;
-        }
 
+        }
     }
-    
 ?>

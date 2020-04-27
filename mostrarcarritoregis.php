@@ -1,5 +1,7 @@
 <?php
 include "carrito.php";
+require_once('conexion.php');
+	$con=Db::conectar();
 ?>
 <!DOCTYPE html>
 <html>
@@ -15,7 +17,7 @@ include "carrito.php";
     ?>
     <!--cuerpo -->
     <?php
-		include"./templates/mostrarcarrito.php";
+    include"./templates/mostrarcarrito.php";
 	?>
     <!-- pie de pagina -->
     <?php

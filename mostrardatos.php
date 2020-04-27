@@ -1,35 +1,10 @@
 <?php
 	require_once('conexion.php');
 	$con=Db::conectar();
-	$admin="mark@mark.com";
-	/*$cuadroinicio=$_POST["inicio"];*/
+    $sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
+	$correo=($_COOKIE["cookiesesion"]);
 	
-		try{
-			
-			$sql="SELECT * FROM usuarios where correo=:correo AND contraseña=:contr";
-			$resultado=$con->prepare($sql);
-			$correo=htmlentities(addslashes($_POST["correo"]));
-			$contraseña=htmlentities(addslashes($_POST["contraseña"]));
-			$resultado->bindValue(":correo", $correo);
-			$resultado->bindValue(":contr", $contraseña);
-			$resultado->execute();
-			$numero_registro=$resultado->rowCount();
-			if($numero_registro!=0){
-				session_start();
-				$_SESSION["usuario"]=$_POST["correo"];
-
-				if(!isset($_SESSION["usuario"])){
-					header("location:index.php");
-				}
-				elseif($_SESSION["usuario"]==$admin)
-				{
-					header("location:indexadministrador.php");
-				}
-				else
-				{
-					$sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
 					$resultado=$con->prepare($sql);
-					$correo=$_SESSION["usuario"];
 					$resultado->bindValue(":correo", $correo);
 					$resultado->execute();
 					foreach($resultado as $nombre)
@@ -38,7 +13,6 @@
 
 						$sql="SELECT correo,contraseña,nombre,apellido,codigo,direccion,movil FROM usuarios where correo=:correo";
 						$resultado=$con->prepare($sql);
-						$correo=$_SESSION["usuario"];
 						$resultado->bindValue(":correo", $correo);
 						$resultado->execute();
 						foreach($resultado as $row){
@@ -50,16 +24,7 @@
 							$row[5];
 							$row[6];
 						}
-					}	
-				}
-			}else{
-				header("Location:indexmal.php");
-				die();
-			}
-		}
-		catch(PDOException $e){
-			echo 'Fallo la conexion:'.$e->GetMessage();
-		}
+					}
 ?>
 <!DOCTYPE html>
 <html>
@@ -106,8 +71,6 @@
 				</div>
 		</div>
 	</div>
-	<!-- creacion de una cookie que tiene el usuario que mas adelante la utilizare para recuperar infromacion de este usuario utilizandola  -->
-	<?php setcookie("cookiesesion",$correo,time()+(365*24*60*60));?>
     <!-- pie de pagina -->
 
 	<?php
@@ -116,4 +79,3 @@
 
 </body>
 </html>
-

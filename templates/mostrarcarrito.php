@@ -1,5 +1,5 @@
 <h3>lista del carrito</h3>
-    <?php if (!empty($_SESSION["usuario"])) { ?>
+    <?php if (!empty($_SESSION["carrito"])) { ?>
     <table class="table table dark table-bordered">
         <tbody>
             <tr>
@@ -11,7 +11,7 @@
             </tr>
             <?php $total=0; ?>
             <?php
-                foreach ($_SESSION["usuario"] as $indice => $producto) { ?>
+                foreach ($_SESSION["carrito"] as $indice => $producto) { ?>
              
             <tr>
                 <td><?php echo $producto['nombre'] ?></td>
@@ -19,9 +19,9 @@
                 <td><?php echo $producto['precio'] ?></td>
                 <td><?php echo number_format($producto['precio']*$producto['cantidad'],2)?></td>
                 <td>
-                    <form method="post" action="">
-                    <input type="hidden" name="id" id="id"  value="<?php echo openssl_encrypt( $producto["id"],COD,KEY) ;?>">
-                        <button class="btn btn-danger" type="submit" name="borrar" value="borrar carrito">borrar</button>
+                    <form method="post" action="carrito.php">
+                        <input type="hidden" name="id" id="id"  value="<?php echo openssl_encrypt( $producto["id"],COD,KEY) ;?>">
+                        <button class="btn btn-danger" type="submit" name="accion" value="borrar del carrito">borrar</button>
                     </form>
                     
                 </td>

@@ -4,7 +4,7 @@
 			<!--boton carrito-->
 			<button type="button" class="btn btn-primary text-light ">
 			<a href="mostrarcarritonoregis.php" class="text-light">ir al carrito(<?php
-					echo (empty($_SESSION["usuario"]))?0:count($_SESSION["usuario"]);?>)
+					echo (empty($_SESSION["carrito"]))?0:count($_SESSION["carrito"]);?>)
 				</a>	
 			</button>
 
