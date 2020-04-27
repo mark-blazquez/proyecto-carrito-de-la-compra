@@ -16,5 +16,5 @@ este es el proyecto carrito de la compra y sus documentos se encuentran aqui :
 *indexregistrado - es el index con el menu de navegacion para un usuario registrado
 *mostrar carrito -en construccion pero sirve para mostrar los elementos  que hay en el carrito
 *userregistrado- la que se encarga de introducir los datos del usuario nuevo a la base datos 
-*validacion- se encarga de comprobar si el ususario existe en la base de datos y mostar sus datos
+*validacion- se encarga de comprobar si el ususario existe en la base de datos y mostar sus datos-----HE AVANZADO EN EL PROYECTO Y VOY HA HACER CAMBIOS CRITICOS X ESO LO HE SUBIDO AQUI
 
