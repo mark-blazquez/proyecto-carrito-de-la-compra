@@ -1,7 +1,7 @@
 <?php
-	include "carrito.php";
+    /*conexion*/
 	require_once('conexion.php');
-	$con=Db::conectar(); 
+    $con=Db::conectar();
 ?>
 <!DOCTYPE html>
 <html>
@@ -13,20 +13,20 @@
 <body>
 	<!-- cabecera -->
 	<?php
-		include"./templates/header.php";
-	?>
-	<?php if($mensaje!=""){ ?>
-		<div class="alert alert-dismissible alert-warning fade show" role="alert">
-			<?php echo $mensaje;  ?>
+		include"./templates/headeradministrador.php";
+    ?>
+	<div class="alert alert-dismissible alert-warning fade show" role="alert">
+		 accion realizada
 		<button type="button"class="close" data-dismiss="alert" arial-label="close">
 			<span aria-hidden="true">x</span>
 		</button>
-		</div>
-	<?php } ?>
-	<!-- cuerpo -->
+	</div>
+    <!-- cuerpo -->
+    
 	<?php
-		include"./templates/cuerpoindex.php";
+		include"./templates/cuerpoindexadmin.php";
 	?>
+    
 	<!-- pie de pagina -->
 	<?php
 		include"./templates/footer.php";

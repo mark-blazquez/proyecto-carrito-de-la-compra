@@ -1,49 +1,14 @@
 <header  class="bg-dark" >
-	<h1 class="text-center text-light">tiendas mark</h1>
-	<nav class="navbar bg-dark navbar-dark ">
-		<div class="d-flex p-2 w-100 justify-content-start">
-			
-			<div>
-				<button type="button" class="btn btn-primary text-light ">
-					<a href="mostrarcarrito.php" class="text-light">ir al carrito</a>	
-				</button>
-			</div>
+	<h1 class="text-center text-light"><a href="index.php" class="text-light"> tiendas mark</a></h1>
+	<nav class="navbar navbar-dark ">
+			<!--boton carrito-->
+			<button type="button" class="btn btn-primary text-light ">
+			<a href="mostrarcarritonoregis.php" class="text-light">ir al carrito(<?php
+					echo (empty($_SESSION["usuario"]))?0:count($_SESSION["usuario"]);?>)
+				</a>	
+			</button>
 
-			<div class=" p-2">
-				<form action="validacion.php" method="POST" >
-					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
-						iniciar sesion 
-					</button>
-
-					<div class="modal fade" id="exampleModal" >
-						<div class="modal-dialog" >
-							<div class="modal-content">
-								<div class="modal-header bg-primary">
-								<h5 class="modal-title text-light" id="exampleModalLabel">iniciar sesion</h5>
-								<button type="button" class="close text-light" data-dismiss="modal">&times;</button>
-							</div>
-							<div class="modal-body">
-								<form action="validacion.php" method="POST" >
-									<div class="form-group">
-										<label for="exampleInputEmail1">correo </label>
-										<input type="email" class="form-control"  placeholder="introduce tu correo" required="true" name="correo">
-									</div>
-									
-									<div class="form-group">
-										<label for="exampleInputPassword1">contraseña</label>
-										<input type="password" class="form-control" name="contraseña" placeholder="introduce tu contraseña" required="true">
-									</div>
-									<div class="modal-footer">
-										<input type="submit" class="btn btn-primary" name="inicio">
-									</div>
-								</form>
-							</div>
-						</div>
-					</div>
-				</form>
-			</div>
-
-			<div class=" p-2">
+			<div class=" "><!--formulario para registrarse-->
 				<form action="userregistrado.php" method="POST">
 					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal1">
 						registrarte
@@ -97,6 +62,40 @@
 					</div>
 				</form>
 			</div>
-		</div>
+			
+			<div class=" "><!--formulario inicar sesion-->
+				<form action="validacion.php" method="POST" >
+					<button type="button" class="btn btn-primary" data-toggle="modal" data-target="#exampleModal">
+						iniciar sesion 
+					</button>
+
+					<div class="modal fade" id="exampleModal" >
+						<div class="modal-dialog" >
+							<div class="modal-content">
+								<div class="modal-header bg-primary">
+								<h5 class="modal-title text-light" id="exampleModalLabel">iniciar sesion</h5>
+								<button type="button" class="close text-light" data-dismiss="modal">&times;</button>
+							</div>
+							<div class="modal-body">
+								<form action="validacion.php" method="POST" >
+									<div class="form-group">
+										<label for="exampleInputEmail1">correo </label>
+										<input type="email" class="form-control"  placeholder="introduce tu correo" required="true" name="correo">
+									</div>
+									
+									<div class="form-group">
+										<label for="exampleInputPassword1">contraseña</label>
+										<input type="password" class="form-control" name="contraseña" placeholder="introduce tu contraseña" required="true">
+									</div>
+									<div class="modal-footer">
+										<input type="submit" class="btn btn-primary" name="inicio">
+									</div>
+								</form>
+							</div>
+						</div>
+					</div>
+				</form>
+			</div>
+		
 	</nav>
 </header>

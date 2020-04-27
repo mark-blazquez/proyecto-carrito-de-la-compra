@@ -11,7 +11,7 @@ include "carrito.php";
 <body>
     <!-- cabecera -->
     <?php
-        include"./templates/headerregistrado.php";
+        include"./templates/header.php";
     ?>
     <!--cuerpo -->
     <?php

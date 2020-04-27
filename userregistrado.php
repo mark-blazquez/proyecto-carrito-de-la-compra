@@ -14,7 +14,7 @@
 
 		if (isset($registro)){ 
 			try{
-				$con = new PDO($dsn, $usuario, $contrasena);
+				
 				/*insertar en la tabla */
 				$sentencia = $con->prepare("INSERT INTO usuarios (correo,contraseña,nombre,apellido,codigo,direccion,movil)VALUES(?,?,?,?,?,?,?)");
 				$sentencia->bindParam(1, $correo);
