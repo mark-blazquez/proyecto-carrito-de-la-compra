@@ -69,7 +69,7 @@
                     foreach ($_SESSION["carrito"] as $indice => $producto){
                         if($producto['id']==$id){
                             unset($_SESSION["carrito"][$indice]);
-                            if (isset($_SESSION["carrito"])) {
+                            if (isset($_COOKIE["cookie"])) {
                                 header("location:mostrarcarritoregis.php");
                             }else{
                                 header("location:mostrarcarritonoregis.php");
