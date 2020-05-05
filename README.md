@@ -1,6 +1,6 @@
 # proyecto-carrito-de-la-compra
 este es el proyecto carrito de la compra y sus documentos se encuentran aqui :
-*css se aloja el estilo personalizado que he querido dar a los iconos de redes socuiales 
+*css se aloja el estilo personalizado que he querido dar a los iconos de redes sociales 
 *templates tenemos los modelos que se utilizan desde la pagina :
  +cuepoindex-contiene la tienda 
  +cuepoindexadmin-copntiene las funciones del admin
