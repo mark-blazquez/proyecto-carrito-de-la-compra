@@ -1,4 +1,4 @@
-<footer class=" bg-dark fixed-bottom  "><!--pie de pagina-->
+<footer class=" bg-dark   "><!--pie de pagina-->
 	  	<div class="d-flex justify-content-center p-2">
 			<span class="fa-stack fa-2x"><!--icono face-->
 				<a href="https://www.facebook.com/"></a>

@@ -1,4 +1,5 @@
 <?php
+	session_start();
 	require_once('conexion.php');
 	$con=Db::conectar();
 	$admin="mark@mark.com";
@@ -106,8 +107,6 @@
 				</div>
 		</div>
 	</div>
-	<!-- creacion de una cookie que tiene el usuario que mas adelante la utilizare para recuperar infromacion de este usuario utilizandola  -->
-	<?php setcookie("cookie",$correo,time()+(60));?>
     <!-- pie de pagina -->
 
 	<?php

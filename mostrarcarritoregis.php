@@ -1,4 +1,5 @@
 <?php
+session_start();
 include "carrito.php";
 require_once('conexion.php');
 	$con=Db::conectar();

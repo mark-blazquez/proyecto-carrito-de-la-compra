@@ -18,12 +18,13 @@
 								<input type="hidden" name="id" id="id"  value="<?php echo openssl_encrypt( $producto["id"],COD,KEY) ;?>">
 								<input type="hidden" name="nombre" id="nombre" value="<?php echo openssl_encrypt( $producto["nombre"],COD,KEY) ;?>">
 								<input type="hidden" name="precio" id="precio"  value="<?php echo openssl_encrypt( $producto["precio"],COD,KEY) ;?>">
-								<input type="hidden" name="cantidad" id="cantidad"  value="<?php echo openssl_encrypt( 1,COD,KEY) ;?>">
+								<input type="number" name="cantidad" id="cantidad" value="1"  >
 								<button class="btn btn-primary" type="submit" name="accion" value="agregar al carrito">agregar al carrito</button>
 							</form>
 						</div>
 					</div>
 				</div>
+
 			<?php } ?>
 
 		</div>

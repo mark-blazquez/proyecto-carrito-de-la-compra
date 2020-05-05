@@ -2,7 +2,7 @@
     define("KEY","ola");
     define("COD","AES-128-ECB");
     session_start();
-    
+    $cantidad=$_POST["cantidad"];
 
     if(isset($_POST["accion"])){
         switch($_POST["accion"]){
@@ -24,14 +24,6 @@
                 else{
                     $mensaje ="nombre incorrecto ".$nombre;
                 }
-                if (is_string(openssl_decrypt($_POST["cantidad"],COD,KEY))){
-                    $cantidad=openssl_decrypt($_POST["cantidad"],COD,KEY);
-                    $mensaje= "cantidad correcta ".$cantidad;
-                    
-                }
-                else{
-                    $mensaje ="cantidad incorrecta ".$cantidad;
-                }
                 if (is_string(openssl_decrypt($_POST["precio"],COD,KEY))){
                     $precio=openssl_decrypt($_POST["precio"],COD,KEY);
                     $mensaje= "precio correcto ".$precio;
@@ -40,36 +32,47 @@
                 else{
                     $mensaje ="precio incorrecto ".$precio;
                 }
-                if (!isset($_SESSION["carrito"])){
-                    $producto=array(
-                        'id'=>$id,
-                        'nombre'=>$nombre,
-                        'cantidad'=>$cantidad,
-                        'precio'=>$precio);
-                    $_SESSION["carrito"][0]=$producto;
-                }
-                else{
-                    $numeroProducto=count($_SESSION["carrito"]);
-                    $producto=array(
-                        'id'=>$id,
-                        'nombre'=>$nombre,
-                        'cantidad'=>$cantidad,
-                        'precio'=>$precio
 
-                    );
-                    $_SESSION["carrito"][$numeroProducto]=$producto;
+                $producto=array(
+                    'id'=>$id,
+                    'nombre'=>$nombre,
+                    'precio'=>$precio,
+                    'cantidad'=>$cantidad
+                    
+                );
+                
+                
+
+                if (isset($cantidad)) {
+                    if ($cantidad > 0) {
+                        setcookie("carrito",serialize($producto),time()+(3600));
+
+                        $mensaje ="producto agregado al carrito";
+                    }else {
+                        $mensaje="la cantidad de producto es erronea";
+                    }
+                }else {
+                    $mensaje="la cantidad de producto es erronea";
                 }
-                $mensaje ="producto agregado al carrito";
+
+                if (isset($_COOKIE["carrito"])){
+                    setcookie("carrito",serialize($producto),time()+(3600));
+                };
+                
+                
+
+
             break;
             case 'borrar del carrito':
                 if (is_numeric(openssl_decrypt($_POST["id"],COD,KEY))){
-                    $id=openssl_decrypt($_POST["id"],COD,KEY);
+                        $id=openssl_decrypt($_POST["id"],COD,KEY);
                     
 
-                    foreach ($_SESSION["carrito"] as $indice => $producto){
+                        $producto=unserialize($_COOKIE['carrito']);
                         if($producto['id']==$id){
-                            unset($_SESSION["carrito"][$indice]);
-                            if (isset($_COOKIE["cookie"])) {
+                            setcookie("carrito",serialize($producto),time()-1);
+                            setcookie("cantidad",$cantidad,time()-1);
+                            if (isset($_SESSION["usuario"])) {
                                 header("location:mostrarcarritoregis.php");
                             }else{
                                 header("location:mostrarcarritonoregis.php");
@@ -77,7 +80,7 @@
                             
                             
                         }
-                    }
+                    
                 }
                 else{
                     $mensaje ="id incorrecto ".$id;

@@ -1,30 +1,32 @@
 <?php
+	session_start();
 	require_once('conexion.php');
 	$con=Db::conectar();
     $sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
-	$correo=($_COOKIE["cookiesesion"]);
+	$correo=($_SESSION["usuario"]);
 	
-					$resultado=$con->prepare($sql);
-					$resultado->bindValue(":correo", $correo);
-					$resultado->execute();
-					foreach($resultado as $nombre)
-					{
-						$nombre[0];
+	$resultado=$con->prepare($sql);
+	$resultado->bindValue(":correo", $correo);
+	$resultado->execute();
+	foreach($resultado as $nombre)
+	{
+		$nombre[0];
 
-						$sql="SELECT correo,contraseña,nombre,apellido,codigo,direccion,movil FROM usuarios where correo=:correo";
-						$resultado=$con->prepare($sql);
-						$resultado->bindValue(":correo", $correo);
-						$resultado->execute();
-						foreach($resultado as $row){
-							$row[0];
-							$row[1];
-							$row[2];
-							$row[3];
-							$row[4];
-							$row[5];
-							$row[6];
-						}
-					}
+		$sql="SELECT correo,contraseña,nombre,apellido,codigo,direccion,movil FROM usuarios where correo=:correo";
+		$resultado=$con->prepare($sql);
+		$resultado->bindValue(":correo", $correo);
+		$resultado->execute();
+		foreach($resultado as $row)
+		{
+			$row[0];
+			$row[1];
+			$row[2];
+			$row[3];
+			$row[4];
+			$row[5];
+			$row[6];
+		}
+	}
 ?>
 <!DOCTYPE html>
 <html>
