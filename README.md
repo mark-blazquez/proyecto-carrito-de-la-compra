@@ -1,6 +1,7 @@
 # proyecto-carrito-de-la-compra
 este es el proyecto carrito de la compra y sus documentos se encuentran aqui :
 *css se aloja el estilo personalizado que he querido dar a los iconos de redes sociales 
+*libreriapdf la encargada de poder crear un pdf
 *templates tenemos los modelos que se utilizan desde la pagina :
  +cuepoindex-contiene la tienda 
  +cuepoindexadmin-copntiene las funciones del admin
@@ -17,7 +18,7 @@ este es el proyecto carrito de la compra y sus documentos se encuentran aqui :
 *cierre  sirve para cerrar sesiones abiertas que es un enlace de un boton
 *conexion he realizado la conexion a parte para facilitar el cambio cuando paso de local a mi host y no ir uno a uno modificando mis documentos que requieren de este
 *datosticket-pagina que recoje todos los datos que se quieren mostarar en el ticket 
-*facturas-pagina donde se reflejan las compras y nos da acceso al ticket, aqui es donde se me presenta el fallo al pasar los impout que iran en oculto
+*facturas-pagina donde se reflejan las compras y nos da acceso al ticket
 *index - donde se aloja la tienda 
 *indexadmindato-un index que salta cuando el administardor realiza una accion
 *indexadministardor es el index para el usuario administardor con sus opciones para modificar 
@@ -30,7 +31,7 @@ este es el proyecto carrito de la compra y sus documentos se encuentran aqui :
 *mostrarcarritoregis-muestra los datos del carrito con los templates de un usuario con sesion iniciada
 *mostrardatos - muestra al usduario sus datos 
 *pagar-la encargada de crear la tabla en la base de datos de ventas "pedidos"
-*ticketpdf-es la pagina donde los datos obtenidos y pasados por post a esta seran transformados en pdf
+*ticketpdf-es la pagina donde los datos obtenidos y pasados por post a esta seran transformados en pdf con consultas a base de ddatos 
 *userregistrado- la que se encarga de introducir los datos del usuario nuevo a la base datos 
 *validacion- se encarga de comprobar si el ususario existe en la base de datos y mostar sus datos
 
