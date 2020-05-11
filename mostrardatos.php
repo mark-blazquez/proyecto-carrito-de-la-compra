@@ -2,7 +2,10 @@
 	session_start();
 	require_once('conexion.php');
 	$con=Db::conectar();
-    $sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
+	$sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
+	/**esto es para detectar que clase de uusuario es en mi caso los administradores tienen codigo 1 
+	es autoincremental en los demas, pero cambiable por si hay que nombrar a un usuario ya creadop admin ,
+	le pongo diferente de uno para que esta pagina no le salte al admin*/
 	$correo=($_SESSION["usuario"]);
 	
 	$resultado=$con->prepare($sql);
@@ -25,7 +28,7 @@
 			$row[4];
 			$row[5];
 			$row[6];
-		}
+		}/*se obtienen los datos y se guardan para luego mostrarlos*/
 	}
 ?>
 <!DOCTYPE html>
@@ -35,18 +38,18 @@
 		include"./templates/head.php";
 	?>
 </head>
-<body> 
+<body style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); "> 
 
 	<!-- cabecera -->
 	<?php
 		include"./templates/headerregistrado.php";
 	?>
 	<!--cuerpo -->
-	<div class="container ">
+	<div class="container bg-warning">
 		<h3>Bienvenido <i><strong><?php echo"$nombre[0]";?></i></strong> a continuacion te presentamos tus datos:</br></h3>
 		<div class="container d-flex justify-content-center">
 				<div class=" container d-flex justify-content-center">
-					<table class="table">
+					<table class="table table-borderless">
 						<thead>
 							<tr>
 								<th scope="col">correo</th>
@@ -74,10 +77,10 @@
 		</div>
 	</div>
     <!-- pie de pagina -->
-
-	<?php
-		include"./templates/footer.php";
-	?>
-
+	<div class="fixed-bottom">
+		<?php
+			include"./templates/footer.php";
+		?>
+	</div>
 </body>
 </html>

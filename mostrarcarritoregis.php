@@ -6,23 +6,25 @@ require_once('conexion.php');
 ?>
 <!DOCTYPE html>
 <html>
-<head>
+<head style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); ">
 	<?php
 		include"./templates/head.php";
 	?>
 </head>
-<body>
+<body style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); ">
     <!-- cabecera -->
     <?php
         include"./templates/headerregistrado.php";
-    ?>
+    ?><!--cabecera de usuario no registrado-->
     <!--cuerpo -->
     <?php
     include"./templates/mostrarcarrito.php";
 	?>
     <!-- pie de pagina -->
-    <?php
-		include"./templates/footer.php";
-	?>
+    <div class="fixed-bottom">
+        <?php
+            include"./templates/footer.php";
+        ?>
+    </div>
 </body>
 </html>

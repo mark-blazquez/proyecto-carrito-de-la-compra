@@ -3,7 +3,7 @@
 	require_once('conexion.php');
 	$con=Db::conectar();
 	$admin="mark@mark.com";
-	/*$cuadroinicio=$_POST["inicio"];*/
+	
 	
 		try{
 			
@@ -20,14 +20,15 @@
 				$_SESSION["usuario"]=$_POST["correo"];
 
 				if(!isset($_SESSION["usuario"])){
-					header("location:index.php");
+					header("location:index.php");/**si no hay una sesion te lleva al index sin session iniciada  */
 				}
 				elseif($_SESSION["usuario"]==$admin)
-				{
+				{/*esto lo hago para que direccione a una pagina u a otra segun funcion en este caso te llevaria a admin porque le digo que si el usuario es mark k lleve a pagina de admin
+					utilizo este metodo porque es mas rapido pero tambien podria evaluarlo segun su perfil ej  perfi==1 ->es admin !=1->no admin*/
 					header("location:indexadministrador.php");
 				}
 				else
-				{
+				{/**si no es ningun caso de los d arriba es un usuario normal y lo lleva a sus datos   */
 					$sql="SELECT nombre FROM usuarios where correo=:correo and perfil!=1";
 					$resultado=$con->prepare($sql);
 					$correo=$_SESSION["usuario"];
@@ -69,18 +70,18 @@
 		include"./templates/head.php";
 	?>
 </head>
-<body> 
+<body style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); "> 
 
 	<!-- cabecera -->
 	<?php
 		include"./templates/headerregistrado.php";
 	?>
 	<!--cuerpo -->
-	<div class="container ">
+	<div class="container bg-warning ">
 		<h3>Bienvenido <i><strong><?php echo"$nombre[0]";?></i></strong> a continuacion te presentamos tus datos:</br></h3>
 		<div class="container d-flex justify-content-center">
 				<div class=" container d-flex justify-content-center">
-					<table class="table">
+					<table class="table table-borderless">
 						<thead>
 							<tr>
 								<th scope="col">correo</th>
@@ -108,11 +109,11 @@
 		</div>
 	</div>
     <!-- pie de pagina -->
-
-	<?php
-		include"./templates/footer.php";
-	?>
-
+	<div class="fixed-bottom">
+		<?php
+			include"./templates/footer.php";
+		?>
+	</div>
 </body>
 </html>
 

@@ -1,6 +1,8 @@
-<div class="container">
+<div class="container bg-warning">
         <h5 class="d-flex justify-content-center">hola administrador este es el lugar para modificar , consultar , introducir y borrar los objetos</h5>
         <div class="d-flex justify-content-center p-2 ">
+        <!--estos son los botones para realizar acciones-->
+
             <div class="p-2">
                 <button class="btn btn-dark  d-sm-block collapse   " type="radio" data-toggle="collapse" href="#multiCollapseExample1" role="button" aria-expanded="false" aria-controls="multiCollapseExample4" >
                     <a href="#contacto"class="text-light">mostar tabla</a>
@@ -22,35 +24,35 @@
                 </button>
             </div>
         </div>
-        
+        <!--estan son las acciones de los botones que estan ocultas-->
         
         <form class="collapse p-2" action="insertar.php" method="POST" id="multiCollapseExample2">
                 <input type="text" name="nombre" placeholder="nombre del articulo">
                 <input type="text" name="precio" placeholder="precio del articulo">
                 <input type="text" name="descripcion" placeholder="descripcion del articulo">
                 <input type="text" name="img" placeholder="url de la imagen del articulo">
-                <input class="boton" type="submit" name="añadir" value="añadir articulo">
+                <input class="btn btn-dark" role="button" type="submit" name="añadir" value="añadir articulo">
         </form>
         
         <form class="collapse p-2" action="borrar.php" method="POST" id="multiCollapseExample3">
                 
                 <input type="text" name="id" placeholder="id del producto">
-                <input class="boton" type="submit" name="submit" value="borrar producto">
+                <input class="btn btn-dark" role="button" type="submit" name="submit" value="borrar producto">
         </form>
 
 
         
         <form class="collapse p-2" action="actualizar.php" method="POST" id="multiCollapseExample4">
-                <p>para actualizar el libro consulta el id primero y a continuacion inserta los valores nuevos </p>
-                <input type="text" name="id" placeholder="id del libro">
+                <p>para actualizar el producto consulta el id primero y a continuacion inserta los valores nuevos </p>
+                <input type="text" name="id" placeholder="id del articulo">
                 <input type="text" name="nombre" placeholder="nombre del articulo">
                 <input type="text" name="precio" placeholder="precio del articulo">
                 <input type="text" name="descripcion" placeholder="descripcion del articulo">
                 <input type="text" name="img" placeholder="url de la imagen del articulo">
-                <input class="boton" type="submit" name="submit" value="actualizar libro">
+                <input class="btn btn-dark" role="button" type="submit" name="submit" value="actualizar articulo">
         </form>	
-        
-        <table class="table table-light collapse " id="multiCollapseExample1">
+        <!--esta es la tabla de productos con su informacion-->
+        <table class="table table-warning collapse " id="multiCollapseExample1">
             <tbody>
                 <tr>
                     <th>id</th>

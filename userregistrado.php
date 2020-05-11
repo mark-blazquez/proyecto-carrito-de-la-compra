@@ -15,7 +15,7 @@
 		if (isset($registro)){ 
 			try{
 				
-				/*insertar en la tabla */
+				/*insertar en la tabla los datos del formaulario de cracion de usuario */
 				$sentencia = $con->prepare("INSERT INTO usuarios (correo,contraseña,nombre,apellido,codigo,direccion,movil)VALUES(?,?,?,?,?,?,?)");
 				$sentencia->bindParam(1, $correo);
 				$sentencia->bindParam(2, $contraseña);

@@ -1,49 +1,23 @@
+<?php
+if (isset($_SESSION["carrito"])) {
+	foreach ($_SESSION["carrito"] as $indice => $producto)
+	$cantidad=$producto["cantidad"];
+}
+?>
 <header  class="bg-dark" >
-	<h1 class="text-center text-light"><a href="index.php" class="text-light"> tiendas mark</a></h1>
+	<h1 class="text-center text-light"><a href="index.php" class="text-light"> Armeria Mark</a></h1>
 	<nav class=" navbar d-flex p-2">
 
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-	
 			<!--boton carrito-->
 			<button type="button " class="btn btn-primary text-light ">
-				<a href="mostrarcarritonoregis.php" class="text-light">ir al carrito(<?php
-					echo count($_COOKIE['carrito']);?>)
+				<a href="mostrarcarritonoregis.php" class="text-light">ir al carrito(
+					<?php
+
+					echo (empty($_SESSION["carrito"]))?0:count($_SESSION["carrito"]);
+					?>
+					)
 				</a>	
 			</button>
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
-
 			<!--formulario inicar sesion-->
 			<div class=" d-flex align-items-center ">
 				<form action="validacion.php" method="POST" >

@@ -10,7 +10,7 @@
 		include"./templates/head.php";
 	?>
 </head>
-<body>
+<body style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); ">
 	<!-- cabecera -->
 	<?php
 		include"./templates/headeradministrador.php";
@@ -20,9 +20,6 @@
 		include"./templates/cuerpoindexadmin.php";
 	?>
 	
-	<!-- pie de pagina -->
-	<?php
-		include"./templates/footer.php";
-	?>	
+	
 </body>
 </html>

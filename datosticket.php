@@ -6,23 +6,27 @@
 
     $correo=$_SESSION["usuario"];
     $idventa=$_POST["id"];
-    
-    
-	
-   
+    $_SESSION["id"]=$idventa;
     
 
-    $sentencia=$con->prepare("SELECT total from ventas where id='$idventa'");
+    /**obtengo el correo asociado al  idventa para que solo pueda imprimir sus facturas */
+    $sentencia=$con->prepare("SELECT correo from ventas where id='$idventa'");
     $sentencia->execute();
-	foreach($sentencia as $row){
-		$total=$row[0];
+    foreach($sentencia as $row){
+        $correo1 = $row[0];
         
     }
+    /*esto es para que solo atrape los datos de vinvulados a tu correo y no a otro , en caso de ser otro te manda a la zona de facturas */
 
-    /*poner un header a ticketpdf.php para quer muestre directamente los datos en el pdf */
-    
-    
-?>
+    if (isset($correo)) {
+        if ($correo!=$correo1) {
+            /**meter un srcipt para que salga k los datos del ticket */
+            header("location:facturas.php");
+        }
+    }
+
+
+?>               
 <!DOCTYPE html>
 <html>
 <head>
@@ -30,40 +34,12 @@
 		include"./templates/head.php";
 	?>
 </head>
-<body>
+<body style="background-image: url(https://i.pinimg.com/originals/70/59/89/705989c1c8471442290802deae51fd0e.jpg); ">
     <div class="container d-flex align-item-center justify-content-center">
-        <form action="ticketpdf.php" method="POST" >
-            <?php 
-                $sentencia=$con->prepare("SELECT idproducto,preciounidad,cantidad from factura where idventa='$idventa'");
-                $sentencia->execute();
-                foreach($sentencia as $row){
-                   
-            ?>                       
-            <input  type="text" class="form-control"   required="true" name="id" value="<?php echo $row[0] ;?>">
-
-            <input  type="text" class="form-control"   required="true" name="precio" value="<?php echo $row[1] ;?>">
-            <input  type="text" class="form-control"   required="true" name="cantidad" value="<?php echo  $row[2] ;?>">
-            <?php } 
-	
-                $idproducto=$row[0];
-
-                $sentencia=$con->prepare("SELECT nombre from productos where id='$idproducto'");
-                $sentencia->execute();
-                foreach($sentencia as $row){
-                    
-            ?>
-            <input  type="text" class="form-control"   required="true" name="nombre" value="<?php echo  $row[0] ;?>">
-            <?php } ?>
-
-            <input  type="text" class="form-control"   required="true" name="total" value="<?php echo  $total ;?>">	
-
-            <div class="alert alert-primary" role="alert">
-                <h5>vas a ser redireccionado a una pagina en la que podras visualizar el pdf</h5>
-                <input type="submit" button class="btn btn-danger"  value="aceptar"></input>
-            </div>
-            
-                                    
-        </form>
+        <div class="alert alert-warning" role="alert">
+            <h5 >vas a ser redireccionado a una pagina en la que podras visualizar el pdf</h5>
+            <button class="btn btn-dark"><a class="text-light" href="ticketpdf.php">aceptar</a> </button>
+        </div><!--esto es el boton de redireccionamiento para hacer el ticket que pasa todas las variabales --> 
     </div>
 </body>
-</html>
+</html> 
